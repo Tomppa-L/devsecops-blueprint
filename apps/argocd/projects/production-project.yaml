@@ -1,1 +1,68 @@
-
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: production-project
+  namespace: argocd
+  labels:
+    app: snake-demo
+    type: project
+spec:
+  description: "Production grade applications for snake-demo gaming platform"
+  
+  # Sallitut lähderepositoryt
+  sourceRepos:
+    - 'https://github.com/Tomppa-L/devsecops-blueprint.git'
+    - 'https://github.com/Tomppa-L/*'
+  
+  # Sallitut destination-klusterit ja namespace
+  destinations:
+    - namespace: 'snake-demo-*'
+      server: https://kubernetes.default.svc
+    - namespace: 'snake-demo-*'
+      server: https://*.eks.amazonaws.com
+    - namespace: 'snake-demo-*'
+      server: https://*.aks.io
+    - namespace: 'snake-demo-*'
+      server: https://*.gke.io
+  
+  # Roolit ja oikeudet
+  roles:
+    - name: admin
+      description: "Full access to production project"
+      policies:
+        - p, proj:production-project:admin, applications, *, production-project/*, allow
+      groups:
+        - platform-admins
+        - devops-engineers
+    
+    - name: developer
+      description: "Read-only access for developers"
+      policies:
+        - p, proj:production-project:developer, applications, get, production-project/*, allow
+      groups:
+        - developers
+  
+  # Tietoturvarajoitukset
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  
+  # Lisäturvallisuus: estä tietyt resurssityypit
+  namespaceResourceBlacklist:
+    - group: '*'
+      kind: Secret
+  
+  # Sallitut synkronointivaihtoehdot
+  syncWindows:
+    - kind: allow
+      schedule: '0 0 * * *'
+      duration: 24h
+      namespaces:
+        - snake-demo-prod
+      applications:
+        - snake-demo-production
+      manualSync: true
