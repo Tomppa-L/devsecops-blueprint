@@ -1,6 +1,3 @@
-# devsecops-blueprint
-snake-app-architecture aka devsecops-blueprint
-
 # Global Multi-Region DevSecOps Architecture & Application Stack
 
 Welcome to the production-grade architecture blueprint for a secure, high-availability, globally distributed gaming platform ("Snake App"). This project demonstrates advanced cloud-native engineering principles, incorporating GitOps, DevSecOps, Service Mesh, Multi-Dimensional Scaling, and Multi-Region resilience using a 100% open-source stack.
@@ -284,8 +281,48 @@ Resource allocation is auto-managed across three complementary abstraction layer
 graph TB
     subgraph "Horizontal Scaling Layer"
         HPA[Horizontal Pod Autoscaler]
-HPA -.->|Watches Live Load| METRICS[Target: CPU 70% / Mem 80%]endsubgraph "Vertical Tuning Layer"VPA[Vertical Pod Autoscaler]VPA -.->|Analyzes Trends| RECOMMENDER[Recommendation Mode Only]endsubgraph "Infrastructure Scaling Layer"CA[Cluster Autoscaler]CA -->|Provisions Bare Metal| NODES[Dynamic EC2/Compute Nodes]endsubgraph "Active Workloads"POD1[Application Pod 1]POD2[Application Pod 2]POD3[HPA Scaled Pod 3]POD4[HPA Scaled Pod 4]endHPA -->|Scale Out Instances| POD3HPA -->|Scale Out Instances| POD4RECOMMENDER -.->|Updates Request/Limit Baselines Offline| POD1RECOMMENDER -.->|Updates Request/Limit Baselines Offline| POD2NODES -.->|Schedules Overflown Pods| POD3NODES -.->|Schedules Overflown Pods| POD4style HPA fill:#4CAF50,stroke:#fffstyle CA fill:#2196F3,stroke:#fffstyle VPA fill:#FF9800,stroke:#fff```HPA & VPA Coexistence Best Practice: To prevent scheduling conflicts, VPA runs strictly in updateMode: "Off". It tracks utilization metrics over time to optimize baseline resource definitions (requests), while HPA responds to sudden real-time traffic spikes by scaling pod counts.Infrastructure Autoscaling: When the HPA scales pod counts beyond cluster capacity, the Cluster Autoscaler provisions physical virtual machine nodes directly from the cloud provider pool.🛠️ 6. Open-Source Cloud-Native Technology StackThe stack is architected with modern open-source technologies to avoid vendor lock-in and optimize resource footprint.
+        HPA -.->|Watches Live Load| METRICS[Target: CPU 70% / Mem 80%]
+    end
 
+    subgraph "Vertical Tuning Layer"
+        VPA[Vertical Pod Autoscaler]
+        VPA -.->|Analyzes Trends| RECOMMENDER[Recommendation Mode Only]
+    end
+
+    subgraph "Infrastructure Scaling Layer"
+        CA[Cluster Autoscaler]
+        CA -->|Provisions Bare Metal| NODES[Dynamic EC2/Compute Nodes]
+    end
+
+    subgraph "Active Workloads"
+        POD1[Application Pod 1]
+        POD2[Application Pod 2]
+        POD3[HPA Scaled Pod 3]
+        POD4[HPA Scaled Pod 4]
+    end
+
+    HPA -->|Scale Out Instances| POD3
+    HPA -->|Scale Out Instances| POD4
+    
+    RECOMMENDER -.->|Updates Request/Limit Baselines Offline| POD1
+    RECOMMENDER -.->|Updates Request/Limit Baselines Offline| POD2
+
+    NODES -.->|Schedules Overflown Pods| POD3
+    NODES -.->|Schedules Overflown Pods| POD4
+
+    style HPA fill:#4CAF50,stroke:#fff
+    style CA fill:#2196F3,stroke:#fff
+    style VPA fill:#FF9800,stroke:#fff
+```
+
+* **HPA & VPA Coexistence Best Practice:** To prevent scheduling conflicts, **VPA runs strictly in `updateMode: "Off"`**. It tracks utilization metrics over time to optimize baseline resource definitions (`requests`), while HPA responds to sudden real-time traffic spikes by scaling pod counts.
+* **Infrastructure Autoscaling:** When the HPA scales pod counts beyond cluster capacity, the Cluster Autoscaler provisions physical virtual machine nodes directly from the cloud provider pool.
+
+## 🛠️ 6. Open-Source Cloud-Native Technology Stack
+
+The stack is architected with modern open-source technologies to avoid vendor lock-in and optimize resource footprint.
+
+```text
 ├── Application Layer
 │   ├── Frontend: HTML5 Vanilla JS + Canvas (Raw execution, minimal runtime bundle)
 │   ├── Backend: Node.js 20 + Express 4.18 (Lightweight REST framework)
