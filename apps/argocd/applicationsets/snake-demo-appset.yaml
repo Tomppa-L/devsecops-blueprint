@@ -1,1 +1,84 @@
-
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: snake-demo
+  namespace: argocd
+  labels:
+    app: snake-demo
+    type: application-set
+    managed-by: gitops
+spec:
+  generators:
+    - list:
+        elements:
+          # Kehitysympäristö
+          - environment: dev
+            namespace: snake-demo-dev
+            valuesFile: values-dev.yaml
+            syncWave: "1"
+            replicaCount: "1"
+            imageTag: latest
+          # Testiympäristö
+          - environment: staging
+            namespace: snake-demo-staging
+            valuesFile: values-staging.yaml
+            syncWave: "2"
+            replicaCount: "2"
+            imageTag: staging-latest
+          # Tuotantoympäristö
+          - environment: production
+            namespace: snake-demo-prod
+            valuesFile: values-prod.yaml
+            syncWave: "3"
+            replicaCount: "3"
+            imageTag: stable
+  template:
+    metadata:
+      name: 'snake-demo-{{environment}}'
+      labels:
+        app: snake-demo
+        environment: '{{environment}}'
+        managed-by: argocd
+    spec:
+      project: production-project
+      source:
+        repoURL: https://github.com/Tomppa-L/devsecops-blueprint.git
+        targetRevision: main
+        path: helm/snake-demo
+        helm:
+          valueFiles:
+            - 'values/{{valuesFile}}'
+          parameters:
+            - name: image.repository
+              value: docker.io/architecture-portfolio/snake-app
+            - name: image.tag
+              value: '{{imageTag}}'
+            - name: replicaCount
+              value: '{{replicaCount}}'
+            - name: environment
+              value: '{{environment}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=true
+          - PruneLast=true
+          - ApplyOutOfSyncOnly=true
+          - RespectIgnoreDifferences=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+      revisionHistoryLimit: 3
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+            - /spec/replicas
