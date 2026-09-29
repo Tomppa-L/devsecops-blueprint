@@ -10,15 +10,15 @@ A production-ready, enterprise-grade reference architecture demonstrating advanc
        │
 ┌──────▼──────────┐
 │   Nginx LB      │ ← Load Balancer (least_conn)
-└──────┬────────┘
+└───--───┬────────┘
          │
-    ┌────┴────┬────────┬────────┐
+    ┌────┴────┬────────┬───-────┐
     │         │        │        │
-┌───▼───┐ ┌──▼───┐ ┌──▼───┐ ┌──▼───┐
-│ ALPHA │ │ BETA │ │GAMMA │ │DELTA │ ← 4 Backend Instances
-└───┬───┘ └──┬───┘ └──┬───┘ └──┬───┘
-    │        │        │        │
-    └────────┴────┬───┴────────┘
+┌───▼───┐  ┌──▼───┐ ┌──▼───┐ ┌──▼───┐
+│ ALPHA │  │ BETA │ │GAMMA │ │DELTA │ ← 4 Backend Instances
+└───┬───┘  └──┬───┘ └──┬───┘ └──┬───┘
+    │         │        │        │
+    └───────-─┴───┬──-─┴────────┘
                   │
          ┌────────▼─────────┐
          │  OTel Collector  │ ← Telemetry Hub
@@ -57,7 +57,7 @@ Resiliency & FinOps: Chaos Mesh (chaos engineering), Kubecost (cost optimization
 Get the platform running locally in minutes:
 
 # 1. Clone repository
-git clone https://github.com/Tomppa-L/<private-for-now>
+git clone https://github.com/Tomppa-L/private-for-now
 cd snake-demo
 
 # 2. Install with Helm (Development Profile)
@@ -71,23 +71,33 @@ helm upgrade --install snake-demo ./helm/snake-demo \
 
 
 📚 Documentation & Operations Playbooks
+
 This project emphasizes team collaboration and operational excellence through version-controlled playbooks:
 
 📖 Full Deployment & Onboarding Plan – Step-by-step 18-stage guide designed for junior and senior engineers alike.
 
+
 🛠️️ Production Operations Playbook – Day-2 operations, scaling, rollbacks, and troubleshooting.
+
 
 🔍 Advanced Observability Guide – RUM, tracing, and Thanos configuration.
 
+
 💥 Chaos Engineering Guide – Resilience testing with Chaos Mesh.
+
 
 💰 FinOps Guide – Cost monitoring and optimization.
 
+
 💡 Engineering Culture & Methodology
+
 Built with a strong focus on "Me-henki" and shared responsibility:
 
 Cross-Read Documentation: Core deployment plans are version-controlled, living documents requiring team alignment.
 
 Automated Health Validation: Built-in validation scripts (health-check.sh) ensuring deterministic deployments from dev to production.
+
+
+
 
 Made with ❤️ for the Cloud-Native & SRE Community.
