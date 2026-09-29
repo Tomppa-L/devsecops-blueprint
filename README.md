@@ -3,7 +3,7 @@ Snake Demo: Enterprise Cloud-Native Platform & Observability Playground 🚀
 A production-ready, enterprise-grade reference architecture demonstrating advanced SRE practices, GitOps, multi-cloud observability, and automated onboarding workflows.
 
 🏗️ Architecture Overview
-
+```
 ┌─────────────┐
 │   Browser   │ ← Snake Game (Modern UI)
 └──────┬──────┘
@@ -43,7 +43,7 @@ A production-ready, enterprise-grade reference architecture demonstrating advanc
          ┌────────▼─────────┐
          │     Grafana      │ ← Visualization & Dashboards
          └──────────────────┘
-         
+```
 🌟 Core Stack & Features
 Platform & Orchestration: Kubernetes (K3s/Kind/EKS/AKS), Helm (Dev/Staging/Prod hierarchy), ArgoCD (GitOps).
 
