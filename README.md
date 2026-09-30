@@ -86,7 +86,7 @@ helm upgrade --install snake-demo ./helm/snake-demo \
 
 ## 📚 Documentation & Operations Playbooks
 
-Tämä projekti korostaa tiimiyhteistyötä ja operatiivista huippuosaamista versionhallittujen pelikirjojen kautta:
+This project emphasizes team collaboration and operational excellence through version-controlled playbooks:
 
 | Dokumentti | Kuvaus |
 | :--- | :--- |
@@ -100,7 +100,7 @@ Tämä projekti korostaa tiimiyhteistyötä ja operatiivista huippuosaamista ver
 
 ## 💡 Engineering Culture & Methodology
 
-Rakennettu vahvalla **"Me-henki"**-ajattelulla ja yhteisellä vastuulla:
+Built with a strong team spirit and shared responsibility:"
 
 * **Cross-Read Documentation:** Core deployment plans are version-controlled, living documents requiring team alignment.
 * **Automated Health Validation:** Built-in validation scripts (`health-check.sh`) ensuring deterministic deployments from dev to production.
