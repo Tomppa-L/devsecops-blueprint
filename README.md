@@ -45,29 +45,42 @@ A production-ready, enterprise-grade reference architecture demonstrating advanc
          └──────────────────┘
 ```
 
-## 🌟 Core Stack & Features
+# 🚀 DevSecOps Blueprint
+
+---
+
+## 🌟 Core Stack & Architecture
 
 * **Platform & Orchestration:** Kubernetes (K3s/Kind/EKS/AKS), Helm (Dev/Staging/Prod hierarchy), ArgoCD (GitOps).
 * **Observability (SRE-grade):** Prometheus & Thanos (long-term metrics storage & downsampling), Loki (logs), Tempo (distributed traces), OpenTelemetry (auto-instrumentation).
 * **Security & Authentication:** Keycloak (OIDC/OAuth2 centralized SSO), External Secrets / Vault integration, Network Policies.
 * **Resiliency & FinOps:** Chaos Mesh (chaos engineering), Kubecost (cost optimization), HPA (Horizontal Pod Autoscaler).
-  
 
-⚡ Quick Start (Kubernetes & Helm)
+---
+
+## ⚡ Quick Start (Kubernetes & Helm)
+
 Get the platform running locally in minutes:
 
-# 1. Clone repository
-```bash
-git clone https://github.com/Tomppa-L/private-for-now
-cd snake-demo
+### 1. Clone repository
 
-# 2. Install with Helm (Development Profile)
+```bash
+git clone [https://github.com/Tomppa-L/private-for-now]
+cd snake-demo
+```
+
+### 2. Install with Helm (Development Profile)
+
+```bash
 helm upgrade --install snake-demo ./helm/snake-demo \
   --create-namespace \
   -n snake-demo-dev \
   -f ./helm/snake-demo/values-dev.yaml
+```
 
-# 3. Access Dashboards (Automated check)
+### 3. Access Dashboards (Automated check)
+
+```bash
 ./scripts/start-dashboards.sh
 ```
 
