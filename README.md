@@ -82,6 +82,7 @@ graph LR
     E -->|No| G[Deploy]
     
     F --> H[Auto-Fix PR]
+```
 
 ## ⚡ Quick Start (Kubernetes & Helm)
 
