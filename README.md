@@ -71,34 +71,27 @@ helm upgrade --install snake-demo ./helm/snake-demo \
 ./scripts/start-dashboards.sh
 ```
 
-📚 Documentation & Operations Playbooks
+## 📚 Documentation & Operations Playbooks
 
-This project emphasizes team collaboration and operational excellence through version-controlled playbooks:
+Tämä projekti korostaa tiimiyhteistyötä ja operatiivista huippuosaamista versionhallittujen pelikirjojen kautta:
 
-📖 Full Deployment & Onboarding Plan – Step-by-step 18-stage guide designed for junior and senior engineers alike.
+| Dokumentti | Kuvaus |
+| :--- | :--- |
+| 📖 **[Full Deployment & Onboarding Plan](docs/FULL_DEPLOYMENT_PLAN.md)** | Step-by-step 18-stage guide designed for junior and senior engineers alike. |
+| 🛠 **[Production Operations Playbook](docs/PRODUCTION_OPERATIONS.md)** | Day-2 operations, scaling, rollbacks, and troubleshooting. |
+| 🔍 **[Advanced Observability Guide](docs/ADVANCED_OBSERVABILITY_GUIDE.md)** | RUM, tracing, and Thanos configuration. |
+| 💥 **[Chaos Engineering Guide](docs/CHAOS_ENGINEERING_GUIDE.md)** | Resilience testing with Chaos Mesh. |
+| 💰 **[FinOps Guide](docs/FINOPS_GUIDE.md)** | Cost monitoring and optimization. |
 
+---
 
-🛠️️ Production Operations Playbook – Day-2 operations, scaling, rollbacks, and troubleshooting.
+## 💡 Engineering Culture & Methodology
 
+Rakennettu vahvalla **"Me-henki"**-ajattelulla ja yhteisellä vastuulla:
 
-🔍 Advanced Observability Guide – RUM, tracing, and Thanos configuration.
+* **Cross-Read Documentation:** Core deployment plans are version-controlled, living documents requiring team alignment.
+* **Automated Health Validation:** Built-in validation scripts (`health-check.sh`) ensuring deterministic deployments from dev to production.
 
+---
 
-💥 Chaos Engineering Guide – Resilience testing with Chaos Mesh.
-
-
-💰 FinOps Guide – Cost monitoring and optimization.
-
-
-💡 Engineering Culture & Methodology
-
-Built with a strong focus on "Me-henki" and shared responsibility:
-
-Cross-Read Documentation: Core deployment plans are version-controlled, living documents requiring team alignment.
-
-Automated Health Validation: Built-in validation scripts (health-check.sh) ensuring deterministic deployments from dev to production.
-
-
-
-
-Made with ❤️ for the Cloud-Native & SRE Community.
+*Made with ❤️ for the Cloud-Native & SRE Community.*
