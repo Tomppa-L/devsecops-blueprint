@@ -77,11 +77,11 @@ Tämä projekti korostaa tiimiyhteistyötä ja operatiivista huippuosaamista ver
 
 | Dokumentti | Kuvaus |
 | :--- | :--- |
-| 📖 **[Full Deployment & Onboarding Plan](docs/FULL_DEPLOYMENT_PLAN.md)** | Step-by-step 18-stage guide designed for junior and senior engineers alike. |
-| 🛠 **[Production Operations Playbook](docs/PRODUCTION_OPERATIONS.md)** | Day-2 operations, scaling, rollbacks, and troubleshooting. |
-| 🔍 **[Advanced Observability Guide](docs/ADVANCED_OBSERVABILITY_GUIDE.md)** | RUM, tracing, and Thanos configuration. |
-| 💥 **[Chaos Engineering Guide](docs/CHAOS_ENGINEERING_GUIDE.md)** | Resilience testing with Chaos Mesh. |
-| 💰 **[FinOps Guide](docs/FINOPS_GUIDE.md)** | Cost monitoring and optimization. |
+| 📖 **[Full Deployment & Onboarding Plan]** | Step-by-step 18-stage guide designed for junior and senior engineers alike. |
+| 🛠 **[Production Operations Playbook]** | Day-2 operations, scaling, rollbacks, and troubleshooting. |
+| 🔍 **[Advanced Observability Guide]** | RUM, tracing, and Thanos configuration. |
+| 💥 **[Chaos Engineering Guide]** | Resilience testing with Chaos Mesh. |
+| 💰 **[FinOps Guide]** | Cost monitoring and optimization. |
 
 ---
 
