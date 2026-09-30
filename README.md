@@ -58,6 +58,31 @@ A production-ready, enterprise-grade reference architecture demonstrating advanc
 
 ---
 
+## 🛡️ DevSecOps Security & Compliance Pipeline
+
+*Automated "Shift-Left" security architecture integrating static analysis, container scanning, AI-driven code reviews, and automated remediation loops:*
+
+```mermaid
+graph LR
+    A[Code Push] --> B[GitHub Actions]
+    B --> C1[CodeQL AI Scan]
+    B --> C2[Snyk Analysis]
+    B --> C3[Semgrep Scan]
+    B --> C4[Trivy Scan]
+    B --> C5[OpenAI Review]
+    
+    C1 --> D[Security Dashboard]
+    C2 --> D
+    C3 --> D
+    C4 --> D
+    C5 --> D
+    
+    D --> E{Critical Issues?}
+    E -->|Yes| F[Block Deploy]
+    E -->|No| G[Deploy]
+    
+    F --> H[Auto-Fix PR]
+
 ## ⚡ Quick Start (Kubernetes & Helm)
 
 Get the platform running locally in minutes:
