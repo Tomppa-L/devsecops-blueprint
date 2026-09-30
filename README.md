@@ -44,14 +44,14 @@ A production-ready, enterprise-grade reference architecture demonstrating advanc
          │     Grafana      │ ← Visualization & Dashboards
          └──────────────────┘
 ```
-🌟 Core Stack & Features
-Platform & Orchestration: Kubernetes (K3s/Kind/EKS/AKS), Helm (Dev/Staging/Prod hierarchy), ArgoCD (GitOps).
 
-Observability (SRE-grade): Prometheus & Thanos (long-term metrics storage & downsampling), Loki (logs), Tempo (distributed traces), OpenTelemetry (auto-instrumentation).
+## 🌟 Core Stack & Features
 
-Security & Authentication: Keycloak (OIDC/OAuth2 centralized SSO), External Secrets / Vault integration, Network Policies.
-
-Resiliency & FinOps: Chaos Mesh (chaos engineering), Kubecost (cost optimization), HPA (Horizontal Pod Autoscaler).
+* **Platform & Orchestration:** Kubernetes (K3s/Kind/EKS/AKS), Helm (Dev/Staging/Prod hierarchy), ArgoCD (GitOps).
+* **Observability (SRE-grade):** Prometheus & Thanos (long-term metrics storage & downsampling), Loki (logs), Tempo (distributed traces), OpenTelemetry (auto-instrumentation).
+* **Security & Authentication:** Keycloak (OIDC/OAuth2 centralized SSO), External Secrets / Vault integration, Network Policies.
+* **Resiliency & FinOps:** Chaos Mesh (chaos engineering), Kubecost (cost optimization), HPA (Horizontal Pod Autoscaler).
+  
 
 ⚡ Quick Start (Kubernetes & Helm)
 Get the platform running locally in minutes:
