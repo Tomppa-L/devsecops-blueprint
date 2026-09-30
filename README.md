@@ -57,7 +57,7 @@ Resiliency & FinOps: Chaos Mesh (chaos engineering), Kubecost (cost optimization
 Get the platform running locally in minutes:
 
 # 1. Clone repository
-bash:
+'''bash
 git clone https://github.com/Tomppa-L/private-for-now
 cd snake-demo
 
