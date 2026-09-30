@@ -69,8 +69,7 @@ helm upgrade --install snake-demo ./helm/snake-demo \
 
 # 3. Access Dashboards (Automated check)
 ./scripts/start-dashboards.sh
-```bash
-
+```
 
 📚 Documentation & Operations Playbooks
 
